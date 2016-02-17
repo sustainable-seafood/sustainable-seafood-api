@@ -1,3 +1,8 @@
 class User < ActiveRecord::Base
-  validates :category, inclusion: { in: %w(admin user), message: "%w{value} is not a valid category" }
+  has_secure_password
+
+  has_many :sessions
+
+  validates :category, presence: true, on: [:create], inclusion: { in: %w(admin user), message: "%w{value} is not a valid category" }
+  validates :email, presence: true, on: [:create]
 end
