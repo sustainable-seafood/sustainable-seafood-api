@@ -1,6 +1,5 @@
 class Seafood < ActiveRecord::Base
   belongs_to :species
-  belongs_to :city
 
   validates :name,                 presence: true, length: { maximum: 200 }
   validates :source_location,      presence: true, length: { is: 2 }

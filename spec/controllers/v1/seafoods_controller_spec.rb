@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe V1::SeafoodsController, type: :controller do
   before do
-    @city         = create(:city)
+    @city    = create(:city)
     @species = create(:species, city: @city)
   end
 
@@ -24,7 +24,7 @@ RSpec.describe V1::SeafoodsController, type: :controller do
 
   describe 'GET :show' do
     before do
-      @seafood = create(:seafood, species: @species, city: @city)
+      @seafood = create(:seafood, species: @species)
     end
 
     it 'returns status code 200 and renders seafoods show' do

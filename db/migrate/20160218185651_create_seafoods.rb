@@ -2,7 +2,6 @@ class CreateSeafoods < ActiveRecord::Migration
   def change
     create_table :seafoods do |t|
       t.belongs_to :species, foreign_key: true, index: true
-      t.belongs_to :city,    foreign_key: true, index: true
 
       t.string :name
       t.string :sustainability_level

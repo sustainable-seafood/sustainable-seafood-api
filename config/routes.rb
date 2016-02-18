@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     resources :seafoods
     resources :cities do
       resources :species do
-        resources :seafood
+        resources :seafoods
       end
     end
   end
