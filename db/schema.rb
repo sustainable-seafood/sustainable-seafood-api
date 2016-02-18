@@ -36,10 +36,13 @@ ActiveRecord::Schema.define(version: 20160218185651) do
 
   create_table "seafoods", force: :cascade do |t|
     t.integer  "seafood_type_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.integer  "city_id"
+    t.string   "sustainability_level"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
 
+  add_index "seafoods", ["city_id"], name: "index_seafoods_on_city_id", using: :btree
   add_index "seafoods", ["seafood_type_id"], name: "index_seafoods_on_seafood_type_id", using: :btree
 
   create_table "sessions", force: :cascade do |t|
@@ -63,6 +66,7 @@ ActiveRecord::Schema.define(version: 20160218185651) do
   end
 
   add_foreign_key "seafood_types", "cities"
+  add_foreign_key "seafoods", "cities"
   add_foreign_key "seafoods", "seafood_types"
   add_foreign_key "sessions", "users"
 end
