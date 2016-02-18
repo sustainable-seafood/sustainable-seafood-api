@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     delete 'sessions/:session_token' => 'sessions#destroy'
     resources :seafoods
     resources :cities do
-      resources :seafood_types do
+      resources :species do
         resources :seafood
       end
     end

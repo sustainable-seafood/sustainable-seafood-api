@@ -1,7 +1,8 @@
-class City < ActiveRecord::Base
+class Species < ActiveRecord::Base
   default_scope { order('name DESC') }
 
-  has_many :species
+  belongs_to :city
+
   has_many :seafoods
 
   validates :name, presence: true, length: { maximum: 100 }

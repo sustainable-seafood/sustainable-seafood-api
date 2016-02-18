@@ -22,28 +22,20 @@ ActiveRecord::Schema.define(version: 20160218185651) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "seafood_types", force: :cascade do |t|
+  create_table "seafoods", force: :cascade do |t|
+    t.integer  "species_id"
     t.integer  "city_id"
     t.string   "name"
-    t.string   "scientific_name"
-    t.string   "search_terms"
-    t.string   "picture_url"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-  end
-
-  add_index "seafood_types", ["city_id"], name: "index_seafood_types_on_city_id", using: :btree
-
-  create_table "seafoods", force: :cascade do |t|
-    t.integer  "seafood_type_id"
-    t.integer  "city_id"
     t.string   "sustainability_level"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.string   "source_location"
+    t.string   "harvesting_method"
+    t.string   "facts",                default: [],              array: true
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
   end
 
   add_index "seafoods", ["city_id"], name: "index_seafoods_on_city_id", using: :btree
-  add_index "seafoods", ["seafood_type_id"], name: "index_seafoods_on_seafood_type_id", using: :btree
+  add_index "seafoods", ["species_id"], name: "index_seafoods_on_species_id", using: :btree
 
   create_table "sessions", force: :cascade do |t|
     t.integer  "user_id"
@@ -56,6 +48,15 @@ ActiveRecord::Schema.define(version: 20160218185651) do
   add_index "sessions", ["session_token"], name: "index_sessions_on_session_token", using: :btree
   add_index "sessions", ["user_id"], name: "index_sessions_on_user_id", using: :btree
 
+  create_table "species", force: :cascade do |t|
+    t.integer  "city_id"
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "species", ["city_id"], name: "index_species_on_city_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "category",        default: "user"
     t.string   "email"
@@ -65,8 +66,8 @@ ActiveRecord::Schema.define(version: 20160218185651) do
     t.datetime "updated_at",                       null: false
   end
 
-  add_foreign_key "seafood_types", "cities"
   add_foreign_key "seafoods", "cities"
-  add_foreign_key "seafoods", "seafood_types"
+  add_foreign_key "seafoods", "species"
   add_foreign_key "sessions", "users"
+  add_foreign_key "species", "cities"
 end

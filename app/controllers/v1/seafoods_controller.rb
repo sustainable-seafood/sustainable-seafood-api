@@ -5,8 +5,8 @@ module V1
     def index
       @seafoods = Seafood.all
 
-      @seafoods = @seafoods.where(city_id: params[:city_id])                 if params[:city_id]
-      @seafoods = @seafoods.where(seafood_type_id: params[:seafood_type_id]) if params[:seafood_type_id]
+      @seafoods = @seafoods.where(city_id: params[:city_id])       if params[:city_id]
+      @seafoods = @seafoods.where(species_id: params[:species_id]) if params[:species_id]
 
       if @seafoods
         render 'v1/seafoods/index', status: :ok

@@ -1,4 +1,4 @@
-class SeafoodType < ActiveRecord::Base
+class Session < ActiveRecord::Base
   belongs_to :user
 
   before_create :create_session_token
