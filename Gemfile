@@ -11,6 +11,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'jbuilder', '~> 2.0'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
+gem 'rack-cors', :require => 'rack/cors'
 # Code coverage analysis tool
 gem 'simplecov', :require => false, :group => :test
 
