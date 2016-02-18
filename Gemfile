@@ -44,4 +44,3 @@ group :development do
   # Checks for security vulnerabilities ($ brakeman)
   gem 'brakeman', :require => false
 end
-
