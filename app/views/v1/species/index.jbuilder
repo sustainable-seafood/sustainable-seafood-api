@@ -9,6 +9,7 @@ json.species @species do |species|
       json.source_location            seafood.source_location
       json.harvesting_method          seafood.harvesting_method
       json.facts                      seafood.facts
+      json.search_terms               seafood.search_terms
     end
   end
 end

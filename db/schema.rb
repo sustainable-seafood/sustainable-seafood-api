@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20160218185651) do
     t.string   "source_location"
     t.string   "harvesting_method"
     t.string   "facts",                default: [],              array: true
+    t.string   "search_terms",         default: [],              array: true
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
   end
