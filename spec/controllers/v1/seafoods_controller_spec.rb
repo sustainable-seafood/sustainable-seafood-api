@@ -2,8 +2,7 @@ require 'rails_helper'
 
 RSpec.describe V1::SeafoodsController, type: :controller do
   before do
-    @city    = create(:city)
-    @species = create(:species, city: @city)
+    @species = create(:species)
   end
 
   describe 'GET :index' do
@@ -15,7 +14,7 @@ RSpec.describe V1::SeafoodsController, type: :controller do
     end
    context 'with extra options'
     it 'returns status code 200 and renders seafoods index' do
-      params = { city_id: @city.id, species_id: @species.id }
+      params = { species_id: @species.id }
       get :index, params
       expect(response).to render_template(:index)
       expect(response.status).to eq(200)
@@ -28,7 +27,7 @@ RSpec.describe V1::SeafoodsController, type: :controller do
     end
 
     it 'returns status code 200 and renders seafoods show' do
-      params = { city_id: @city.id, species_id: @species.id, id: @seafood.id }
+      params = { species_id: @species.id, id: @seafood.id }
       get :show, params
       expect(response).to render_template(:show)
       expect(response.status).to eq(200)

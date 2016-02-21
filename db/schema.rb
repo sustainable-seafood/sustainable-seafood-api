@@ -16,12 +16,6 @@ ActiveRecord::Schema.define(version: 20160218185651) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "cities", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "seafoods", force: :cascade do |t|
     t.integer  "species_id"
     t.string   "name"
@@ -47,13 +41,10 @@ ActiveRecord::Schema.define(version: 20160218185651) do
   add_index "sessions", ["user_id"], name: "index_sessions_on_user_id", using: :btree
 
   create_table "species", force: :cascade do |t|
-    t.integer  "city_id"
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
-  add_index "species", ["city_id"], name: "index_species_on_city_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "category",        default: "user"
@@ -66,5 +57,4 @@ ActiveRecord::Schema.define(version: 20160218185651) do
 
   add_foreign_key "seafoods", "species"
   add_foreign_key "sessions", "users"
-  add_foreign_key "species", "cities"
 end
