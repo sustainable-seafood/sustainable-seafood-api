@@ -3,7 +3,7 @@ module V1
     before_action :seafood_by_id, only: [:show]
 
     def index
-      @seafoods = Seafood.all
+      @seafoods = Seafood.all.includes(:species)
       @seafoods = @seafoods.where(species_id: params[:species_id]) if params[:species_id]
 
       if @seafoods

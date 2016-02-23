@@ -7,7 +7,8 @@ class CreateSeafoods < ActiveRecord::Migration
       t.string :sustainability_level
       t.string :source_location
       t.string :harvesting_method
-      t.string :facts, array: true, default: []
+      t.string :facts,        array: true, default: []
+      t.string :search_terms, array: true, default: []
 
       t.timestamps null: false
     end
